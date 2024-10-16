@@ -4,13 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Our Mobile App</title>
+    <title>Pega Initiatives</title>
+    <script>
+        function showView(viewId) {
+            // Remove 'active' class from all buttons and views
+            document.querySelectorAll('.segmented-control button').forEach(button => button.classList.remove('active'));
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+
+            // Add 'active' class to the selected button and view
+            document.querySelector(`[onclick="showView('${viewId}')"]`).classList.add('active');
+            document.getElementById(viewId).classList.add('active');
+        }
+        function copyPreviewUrlToClipboard() {
+            const previewUrl = "https://lab-03253-bos.lab.pega.com/prweb/PRRestService/MobilePreview/v1/configuration/RULE-CHANNEL-MOBILE+CFEC58AB-DA8A-4E04-B781-A4EAC351D799+%2320241016T105409.405+GMT";
+            navigator.clipboard.writeText(previewUrl);
+            alert("Preview url copied to clipboard.\nPlease enter it in Pega Mobile Preview app.")
+        }
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f4f8;
             text-align: center;
-            padding: 50px;
+            padding: 32px;
         }
 
         .container {
@@ -22,7 +38,9 @@
             padding: 30px;
         }
 
-        h1 {
+        h1,
+        h2,
+        h3 {
             color: #333;
         }
 
@@ -31,11 +49,11 @@
             font-size: 18px;
         }
 
-        .download-buttons {
+        .get-buttons {
             margin-top: 30px;
         }
 
-        .download-buttons a {
+        .get-buttons a {
             display: inline-block;
             margin: 10px;
             padding: 15px 25px;
@@ -53,27 +71,152 @@
             background-color: #34a853;
         }
 
-        .download-buttons a:hover {
+        .web-button {
+            background-color: #007bff;
+        }
+
+        .get-buttons a:hover {
             opacity: 0.9;
         }
 
         .app-icon {
             width: 80%;
+        }
+
+        .badge {
+            width: 150px;
+        }
+
+        .app-store-buttons {
+            margin-top: 30px;
+        }
+
+        .app-store-buttons a:hover {
+            opacity: 0.9;
+        }
+
+        .app-store-buttons a {
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* segmented buttons */
+        .segmented-control {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .segmented-control button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .segmented-control button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .segmented-control button:not(:last-child) {
+            border-right: 1px solid #ccc;
+        }
+
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        .app-description {
             margin: 20px 0;
+        }
+
+        .qr-code-img {
+            width: 200px;
+        }
+
+        .qr-code-alt {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            color: #007bff;
+        }
+
+        .qr-code-alt a {
+            text-decoration: none;
+        }
+
+        .qr-code-alt a:hover {
+            opacity: 0.9;
+        }
+
+        .qr-code-alt-icon {
+            vertical-align: middle;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <img src="pega.jpg" alt="Pega Logo" class="app-icon">
+        <img src="res/pega.jpg" alt="Pega Logo" class="app-icon">
         <h1>Pega Initiatives</h1>
-        <p>Get the best experience by downloading our app for your smartphone.</p>
-        <p>Available for both iOS and Android.</p>
-        <div class="download-buttons">
-            <a href="https://apps.apple.com" class="ios-button" target="_blank">Download for iOS</a>
-            <a href="https://play.google.com" class="android-button" target="_blank">Download for Android</a>
+
+        <div class="app-description">
+            <h3>Access our app anywhere</h3>
+            <p>It is designed for ease of access across all your favorite platforms.</p>
         </div>
+        <div class="segmented-control">
+            <button onclick="showView('view1')">Mobile App</button>
+            <button onclick="showView('view2')">Pega Mobile Preview</button>
+            <button onclick="showView('view3')" class="active">Web Browser</button>
+        </div>
+
+        <div id="view1" class="view">
+            <p>Get the best experience by downloading native mobile app for your smartphone.</p>
+            <div class="get-buttons">
+                <a href="https://apps.apple.com" class="ios-button" target="_blank">Get for iOS</a>
+                <a href="https://lab-03253-bos.lab.pega.com/prweb/app/initiatives/?pzuiactionzzz=CXtpbn0xWTVMNmhiNU5ZMXdNZUd6bE1zeTQzdTl4V1N4aVFVaUNZUDFLeHdLeHRCVkJnRko2TExXV1BhcTdvZGV1L2hNWUNZemE4NUorWHdnSkhxZW1FUDFsUmZhYVBoOENMSHJucDVnTmZyMk9aeDZlU1puQVc1czg2RldGTWM1WDFjTEVybW5MWkxLV0RZaHVHbWczWG13clBTMWJ0NTJjTzFBbXZ1ZVFVZEFxdVkzQ2N6alNGRVN5UnEyNmVtNDI5bytPd3dKVmZMSkhnU0ZCYTRsbGg5RzBkOHNMWkM4WnY5YlJyK1NpRmVYMFNCd05Nbk9IZjBkYllMMHVpS0NxK29HbE1ZQ3R5RXRtNnlDRklWNU9LalZZQT09*"
+                    class="android-button" target="_blank">Get for Android</a>
+            </div>
+        </div>
+        <div id="view2" class="view">
+            <p>Preview the app using <b>Pega Mobile Preview</b> from app stores.</p>
+            <div class="app-store-buttons">
+                <a href="https://apps.apple.com/us/app/pega-mobile-preview/id1446716002" target="_blank">
+                    <img src="res/badge-appstore.png" alt="Get Pega Mobile Preview from Google Play" class="badge">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.pega.mobile.preview" target="_blank">
+                    <img src="res/badge-googleplay.png" alt="Get Pega Mobile Preview from App Store" class="badge">
+                </a>
+            </div>
+            <p>Scan below QR code with Pega Mobile Preview</p>
+            <div>
+                <a href="#" onclick="copyPreviewUrlToClipboard()">
+                    <img src="res/preview-qr-code.png" class="qr-code-img">
+                    <div class="qr-code-alt">
+                        <img src="res/icon-preview.png" class="qr-code-alt-icon">
+                        <span>Copy preview url</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="view3" class="view active">
+        <p>Enjoy the app using web browser on any device.</p>
+        <div class="get-buttons">
+            <a href="https://lab-03253-bos.lab.pega.com/prweb" class="web-button" target="_blank">Open in Web Browser</a>
+        </div>
+    </div>
     </div>
 </body>
 
