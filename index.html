@@ -18,7 +18,7 @@
         function copyPreviewUrlToClipboard() {
             const previewUrl = "https://lab-03253-bos.lab.pega.com/prweb/PRRestService/MobilePreview/v1/configuration/RULE-CHANNEL-MOBILE+CFEC58AB-DA8A-4E04-B781-A4EAC351D799+%2320241016T105409.405+GMT";
             navigator.clipboard.writeText(previewUrl);
-            alert("Preview url copied to clipboard.\nPlease enter it in Pega Mobile Preview app.")
+            alert("The preview url has been copied to the clipboard.\nPlease paste it into the Pega Mobile Preview app.")
         }
     </script>
     <style>
@@ -26,7 +26,7 @@
             font-family: Arial, sans-serif;
             background-color: #f0f4f8;
             text-align: center;
-            padding: 32px;
+            padding: 36px;
         }
 
         .container {
@@ -164,6 +164,38 @@
         .qr-code-alt-icon {
             vertical-align: middle;
         }
+
+        @media only screen and (max-width: 950px) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .get-buttons {
+                margin-top: 15px;
+            }
+
+            .app-store-buttons {
+                margin-top: 15px;
+            }
+
+            .segmented-control {
+                margin: 25px 0;
+            }
+
+            .get-buttons a {
+                margin: 5px;
+                padding: 10px 16px;
+                font-size: 15px;
+            }
+
+            .badge {
+                width: 130px;
+            }
+        }
     </style>
 </head>
 
@@ -212,7 +244,7 @@
         </div>
     </div>
     <div id="view3" class="view">
-        <p>Enjoy the app using web browser on any device.</p>
+        <p>Enjoy the app using web browser on any desktop or laptop device.</p>
         <div class="get-buttons">
             <a href="https://lab-03253-bos.lab.pega.com/prweb" class="web-button" target="_blank">Open in Web Browser</a>
         </div>
